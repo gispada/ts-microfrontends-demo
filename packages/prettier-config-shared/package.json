@@ -1,0 +1,8 @@
+{
+  "name": "@mfe-mono-starter/prettier-config-shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "prettier": "^2.4.1"
+  }
+}

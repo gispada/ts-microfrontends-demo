@@ -1,0 +1,13 @@
+{
+  "name": "@mfe-mono-starter/eslint-config-shared",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1"
+  }
+}

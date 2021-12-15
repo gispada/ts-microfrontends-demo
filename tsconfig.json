@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "CommonJS",
+    "types": ["node"],
+    "sourceMap": true,
+    "target": "ES2018",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "interpolate-html-plugin": ["./types.d.ts"]
+    }
+  },
+  "exclude": ["**/node_modules/**"]
+}
