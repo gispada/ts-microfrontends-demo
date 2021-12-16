@@ -1,4 +1,4 @@
-import webpack, { Configuration } from 'webpack'
+import * as webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import InterpolateHtmlPlugin from 'interpolate-html-plugin'
 
@@ -18,7 +18,7 @@ const getCustomEnv = () =>
       {}
     )
 
-const baseConfig: Configuration = {
+const baseConfig: WebpackConfig = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
@@ -30,11 +30,7 @@ const baseConfig: Configuration = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript'
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
             plugins: ['@babel/plugin-transform-runtime']
           }
         }
@@ -56,8 +52,8 @@ const baseConfig: Configuration = {
   ]
 }
 
-export type WebpackConfig = Configuration
+export type WebpackConfig = webpack.Configuration
 
-export default function createWebpackConfig(config: Configuration) {
+export default function createWebpackConfig(config: WebpackConfig) {
   return merge(baseConfig, config)
 }

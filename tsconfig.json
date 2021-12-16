@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "baseUrl": ".",
     "module": "CommonJS",
     "types": ["node"],
     "sourceMap": true,
@@ -9,14 +9,11 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "noImplicitReturns": true
   },
   "exclude": ["**/node_modules/**"],
   "ts-node": {
-      "files": true
+    "files": true
   },
   "files": ["types.d.ts"]
 }

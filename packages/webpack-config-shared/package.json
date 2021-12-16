@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-starter/webpack-config-base",
+  "name": "@mfe-mono-starter/webpack-config-shared",
   "version": "1.0.0",
   "main": "index.ts",
   "devDependencies": {
@@ -13,7 +13,6 @@
     "babel-loader": "^8.2.2",
     "interpolate-html-plugin": "^4.0.0",
     "webpack": "^5.65.0",
-    "webpack-merge": "^5.8.0",
-    "ts-loader": "^9.2.6"
+    "webpack-merge": "^5.8.0"
   }
 }

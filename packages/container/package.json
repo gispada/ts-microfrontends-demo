@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.ts",
-    "build": "",
+    "build": "tsc -p tsconfig.json",
     "lint": "eslint ."
   },
   "browserslist": {

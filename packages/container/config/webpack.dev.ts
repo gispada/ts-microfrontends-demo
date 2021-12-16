@@ -1,4 +1,4 @@
-import createWebpackConfig, { WebpackConfig } from '@mfe-starter/webpack-config-base'
+import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
 // import ModuleFederationPlugin from 'webpack/lib/container/ModuleFederationPlugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
@@ -12,7 +12,8 @@ const devConfig: WebpackConfig = {
   },
   devServer: {
     port: PORT,
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({

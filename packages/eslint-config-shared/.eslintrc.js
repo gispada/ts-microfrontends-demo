@@ -31,5 +31,6 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 0
       }
     }
-  ]
+  ],
+  ignorePatterns: ['**/build/*']
 }
