@@ -20,9 +20,9 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    'spaced-comment': 1,
+    'spaced-comment': 1
     // 'react/prop-types': 0,
-    'react/react-in-jsx-scope': 0
+    // 'react/react-in-jsx-scope': 0
   },
   overrides: [
     {

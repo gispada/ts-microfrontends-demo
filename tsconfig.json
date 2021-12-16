@@ -9,7 +9,10 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "paths": {
+      "shared/*": ["packages/shared/src"]
+    }
   },
   "exclude": ["**/node_modules/**"],
   "ts-node": {

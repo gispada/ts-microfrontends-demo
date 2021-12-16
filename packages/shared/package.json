@@ -1,0 +1,20 @@
+{
+  "name": "@mfe-mono-starter/shared",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "webpack serve --config config/webpack.dev.ts"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.18",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "4.6.0"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  }
+}
