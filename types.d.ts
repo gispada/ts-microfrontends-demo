@@ -1,6 +1,6 @@
 declare module 'interpolate-html-plugin' {
   export default class InterpolateHtmlPlugin {
-    constructor(params: object)
+    constructor(config: object)
     apply(): void
   }
 }

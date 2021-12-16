@@ -23,5 +23,13 @@ module.exports = {
     'spaced-comment': 1,
     // 'react/prop-types': 0,
     'react/react-in-jsx-scope': 0
-  }
+  },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 0
+      }
+    }
+  ]
 }

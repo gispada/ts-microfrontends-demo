@@ -1,10 +1,10 @@
-import createWebpackConfig, { Configuration } from '@mfe-starter/webpack-config-base'
+import createWebpackConfig, { WebpackConfig } from '@mfe-starter/webpack-config-base'
 // import ModuleFederationPlugin from 'webpack/lib/container/ModuleFederationPlugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const PORT = 8080
 
-const devConfig: Configuration = {
+const devConfig: WebpackConfig = {
   mode: 'development',
   entry: './src/index.ts',
   output: {

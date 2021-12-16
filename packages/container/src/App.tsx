@@ -1,8 +1,8 @@
-import React, { createRef, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 // import { mount } from 'child1/App'
 
 function App() {
-  const childRef = createRef<HTMLDivElement>()
+  const childRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     /* const unmount = mount(childRef.current)

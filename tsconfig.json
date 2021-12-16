@@ -12,10 +12,11 @@
     "noImplicitReturns": true,
     "declaration": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "interpolate-html-plugin": ["./types.d.ts"]
-    }
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": ["**/node_modules/**"]
+  "exclude": ["**/node_modules/**"],
+  "ts-node": {
+      "files": true
+  },
+  "files": ["types.d.ts"]
 }

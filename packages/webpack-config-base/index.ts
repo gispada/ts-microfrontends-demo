@@ -1,7 +1,9 @@
-import webpack, { Configuration as WebpackConfig } from 'webpack'
-import { Configuration as WebpackDevServerConfig } from 'webpack-dev-server'
+import webpack, { Configuration } from 'webpack'
 import { merge } from 'webpack-merge'
 import InterpolateHtmlPlugin from 'interpolate-html-plugin'
+
+// Augment Webpack configuration with dev server options
+import 'webpack-dev-server'
 
 const REACT_APP = /^REACT_APP_/i
 
@@ -54,10 +56,8 @@ const baseConfig: Configuration = {
   ]
 }
 
+export type WebpackConfig = Configuration
+
 export default function createWebpackConfig(config: Configuration) {
   return merge(baseConfig, config)
-}
-
-export interface Configuration extends WebpackConfig {
-  devServer?: WebpackDevServerConfig
 }
