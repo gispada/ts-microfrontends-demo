@@ -18,6 +18,23 @@ const getCustomEnv = () =>
       {}
     )
 
+// Testing both loaders
+const loadersMap: Record<string, webpack.RuleSetUseItem> = {
+  tsLoader: {
+    loader: 'ts-loader',
+    options: {
+      // transpileOnly: true
+    }
+  },
+  babelLoader: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+      plugins: ['@babel/plugin-transform-runtime']
+    }
+  }
+}
+
 const baseConfig: WebpackConfig = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
@@ -27,18 +44,16 @@ const baseConfig: WebpackConfig = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-            plugins: ['@babel/plugin-transform-runtime']
-          }
-        }
+        use: [loadersMap.tsLoader]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: ['file-loader']
       }
     ]
   },

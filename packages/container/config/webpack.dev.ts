@@ -6,7 +6,7 @@ const PORT = 8080
 
 const devConfig: WebpackConfig = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     publicPath: `http://localhost:${PORT}/`
   },

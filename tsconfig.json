@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "CommonJS",
+    "module": "CommonJS", // https://webpack.js.org/guides/typescript/#loader
+    //"module": "ES6",
+    //"moduleResolution": "Node",
     "types": ["node"],
     "sourceMap": true,
     "target": "ES2018",
@@ -11,7 +13,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "paths": {
-      "shared/*": ["packages/shared/src"]
+      "shared/*": ["packages/shared/src/*"]
     }
   },
   "exclude": ["**/node_modules/**"],

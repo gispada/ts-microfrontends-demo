@@ -1,7 +1,6 @@
 {
   "name": "@mfe-mono-starter/webpack-config-shared",
   "version": "1.0.0",
-  "main": "index.ts",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.15.8",
@@ -12,6 +11,7 @@
     "@types/webpack-dev-server": "^4.5.0",
     "babel-loader": "^8.2.2",
     "interpolate-html-plugin": "^4.0.0",
+    "ts-loader": "9.2.6",
     "webpack": "^5.65.0",
     "webpack-merge": "^5.8.0"
   }

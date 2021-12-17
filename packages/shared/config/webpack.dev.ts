@@ -1,11 +1,12 @@
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
 import { container } from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const PORT = 8081
 
 const devConfig: WebpackConfig = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     publicPath: `http://localhost:${PORT}/`
   },
@@ -14,11 +15,14 @@ const devConfig: WebpackConfig = {
     hot: true
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
     new container.ModuleFederationPlugin({
       name: 'shared',
       filename: 'remoteEntry.js',
       exposes: {
-        './Components': './src/index.ts'
+        './Components': './src/Components'
       },
       shared: {
         react: { singleton: true },
