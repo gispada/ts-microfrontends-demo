@@ -52,8 +52,12 @@ const baseConfig: WebpackConfig = {
         use: ['babel-loader']
       },
       {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.(png|jpe?g|gif)$/i,
-        use: ['file-loader']
+        type: 'asset/resource'
       }
     ]
   },
