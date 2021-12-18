@@ -22,13 +22,15 @@ const devConfig: WebpackConfig = {
       name: 'shared',
       filename: 'remoteEntry.js',
       exposes: {
-        './Components': './src/Components'
+        './components': './src/components',
+        './utils': './src/utils'
       },
       shared: {
         react: { singleton: true },
         'react-dom': { singleton: true },
         'react-router': { singleton: true },
-        'react-router-dom': { singleton: true }
+        'react-router-dom': { singleton: true },
+        'styled-components': '^5.3.3'
       }
     })
   ]

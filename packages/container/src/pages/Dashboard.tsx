@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from 'react'
 import { MenuContext } from '../context'
 
 const Dashboard = () => {
-  const registerSideMenu = useContext(MenuContext)
+  const registerMenu = useContext(MenuContext)
 
   useEffect(() => {
-    registerSideMenu([])
+    registerMenu([])
   }, [])
 
   return <h1>Dashboard</h1>

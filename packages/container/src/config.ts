@@ -1,16 +1,16 @@
-import type { MenuItem } from 'shared/Components'
+import type { MenuItem } from 'shared/components'
 
 export const topMenu: MenuItem[] = [
   {
     title: 'Home',
-    href: '/'
+    path: '/'
   },
   {
     title: 'Charts',
-    href: '/charts'
+    path: '/charts'
   },
   {
-    title: 'Profile',
-    href: '/profile'
+    title: 'Account',
+    path: '/account'
   }
 ]

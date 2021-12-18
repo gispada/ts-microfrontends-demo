@@ -20,19 +20,21 @@ const devConfig: WebpackConfig = {
       template: './public/index.html'
     }),
     new container.ModuleFederationPlugin({
-      name: 'profile',
+      name: 'account',
       filename: 'remoteEntry.js',
       remotes: {
         shared: 'shared@http://localhost:8081/remoteEntry.js'
       },
       exposes: {
-        './mount': './src/mount'
+        './mount': './src/mount',
+        './routes': './src/routes'
       },
       shared: {
         react: { singleton: true },
-        'react-dom': { singleton: true }
-        // 'react-router': { singleton: true },
-        // 'react-router-dom': { singleton: true }
+        'react-dom': { singleton: true },
+        'react-router': { singleton: true },
+        'react-router-dom': { singleton: true },
+        'styled-components': '^5.3.3'
       }
     })
   ]

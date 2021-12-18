@@ -23,7 +23,7 @@ const devConfig: WebpackConfig = {
       name: 'container',
       remotes: {
         shared: 'shared@http://localhost:8081/remoteEntry.js',
-        profile: 'profile@http://localhost:8082/remoteEntry.js'
+        account: 'account@http://localhost:8082/remoteEntry.js'
       },
       shared: {
         react: { singleton: true },

@@ -24,7 +24,7 @@ export const RootLayout = styled(Layout)`
   }
 
   .content {
-    padding: 24px;
+    padding: 32px;
     height: 100%;
     background: #fff;
   }

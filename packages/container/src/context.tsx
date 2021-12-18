@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { MenuItem } from 'shared/Components'
+import type { MenuItem } from 'shared/components'
 
 export type RegisterMenuFn = (items: MenuItem[]) => void
 

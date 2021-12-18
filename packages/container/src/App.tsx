@@ -1,11 +1,12 @@
 import React, { lazy, useState, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Shell, Loader, MenuItem } from 'shared/Components'
+import { Shell, Loader, MenuItem } from 'shared/components'
+
 import { MenuContext } from './context'
 import { topMenu } from './config'
 import Logo from '../assets/webpack-logo.png'
 
-const Profile = lazy(() => import('./pages/Profile'))
+const Account = lazy(() => import('./pages/Account'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Suspense fallback={<Loader tip="Loading..." />}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="profile/*" element={<Profile />} />
+            <Route path="account/*" element={<Account />} />
           </Routes>
         </Suspense>
       </Shell>

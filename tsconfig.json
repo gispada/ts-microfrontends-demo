@@ -15,7 +15,7 @@
     "paths": {
       "container/*": ["packages/container/src/*"],
       "shared/*": ["packages/shared/src/*"],
-      "profile/*": ["packages/profile/src/*"]
+      "account/*": ["packages/account/src/*"]
     }
   },
   "exclude": ["**/node_modules/**"],

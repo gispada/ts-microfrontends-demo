@@ -1,6 +1,6 @@
 import React, { useState, FC } from 'react'
 import { Layout, Breadcrumb } from 'antd'
-import { createMenu, MenuItem } from './helpers'
+import Menu, { MenuItem } from './Menu'
 import { RootLayout } from './styled'
 
 const { Header, Content, Footer, Sider } = Layout
@@ -22,14 +22,14 @@ const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
         </div>
         {topMenu && (
           <div className="top-menu">
-            {createMenu(topMenu, { theme: 'dark', mode: 'horizontal' })}
+            <Menu theme="dark" mode="horizontal" items={topMenu} />
           </div>
         )}
       </Header>
       <Layout>
         {sideMenu && (
           <Sider collapsible collapsed={menuCollapsed} onCollapse={setMenuCollapsed}>
-            {createMenu(sideMenu, { theme: 'dark', mode: 'inline' })}
+            <Menu theme="dark" mode="inline" items={sideMenu} />
           </Sider>
         )}
         <Layout>

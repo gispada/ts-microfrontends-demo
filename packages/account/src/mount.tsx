@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import { sideMenu } from './config'
+import { routesConfig } from './routes'
 import type { RegisterMenuFn } from 'container/context'
 
 type Options = {
@@ -9,12 +9,12 @@ type Options = {
 }
 
 function mount(el: HTMLElement, { registerSideMenu }: Options) {
-  registerSideMenu(sideMenu)
+  registerSideMenu(routesConfig)
 
   ReactDOM.render(<App />, el)
 
   return function unmount() {
-    console.log('> Unmounting profile')
+    console.log('> Unmounting account')
     ReactDOM.unmountComponentAtNode(el)
   }
 }
