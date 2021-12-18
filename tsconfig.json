@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "CommonJS", // https://webpack.js.org/guides/typescript/#loader
+    "module": "CommonJS", // https://webpack.js.org/guides/typescript/#loader ts-loader does not lazy load
     //"module": "ES6",
     //"moduleResolution": "Node",
     "types": ["node"],
@@ -13,7 +13,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "paths": {
-      "shared/*": ["packages/shared/src/*"]
+      "container/*": ["packages/container/src/*"],
+      "shared/*": ["packages/shared/src/*"],
+      "profile/*": ["packages/profile/src/*"]
     }
   },
   "exclude": ["**/node_modules/**"],

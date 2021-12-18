@@ -1,27 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Button, Card } from 'shared/Components'
-// import { mount } from 'child1/App'
+import React, { lazy, useState, Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { Shell, Loader, MenuItem } from 'shared/Components'
+import { MenuContext } from './context'
+import { topMenu } from './config'
+import Logo from '../assets/webpack-logo.png'
+
+const Profile = lazy(() => import('./pages/Profile'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
 
 function App() {
-  const [clicked, setClicked] = useState(0)
-  const childRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    /* const unmount = mount(childRef.current)
-    return unmount */
-  }, [])
+  const [sideMenu, setSideMenu] = useState<MenuItem[]>([])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Container Application</h1>
-      </header>
-      <Button onClick={() => setClicked(clicked + 1)}>Click me ({clicked})</Button>
-      <Card title="Hello">
-        <p>Lorem ipsum</p>
-      </Card>
-      <div ref={childRef} />
-    </div>
+    <MenuContext.Provider value={setSideMenu}>
+      <Shell logoUri={Logo} topMenu={topMenu} sideMenu={sideMenu}>
+        <Suspense fallback={<Loader tip="Loading..." />}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="profile/*" element={<Profile />} />
+          </Routes>
+        </Suspense>
+      </Shell>
+    </MenuContext.Provider>
   )
 }
 

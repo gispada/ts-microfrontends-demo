@@ -20,7 +20,8 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    'spaced-comment': 1
+    'spaced-comment': 1,
+    '@typescript-eslint/no-non-null-assertion': 0
     // 'react/prop-types': 0,
     // 'react/react-in-jsx-scope': 0
   },

@@ -4,3 +4,5 @@ declare module 'interpolate-html-plugin' {
     apply(): void
   }
 }
+
+declare module "*.png"

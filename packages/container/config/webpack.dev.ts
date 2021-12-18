@@ -22,13 +22,14 @@ const devConfig: WebpackConfig = {
     new container.ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        shared: 'shared@http://localhost:8081/remoteEntry.js'
+        shared: 'shared@http://localhost:8081/remoteEntry.js',
+        profile: 'profile@http://localhost:8082/remoteEntry.js'
       },
       shared: {
         react: { singleton: true },
-        'react-dom': { singleton: true }
-        // 'react-router': { singleton: true },
-        // 'react-router-dom': { singleton: true }
+        'react-dom': { singleton: true },
+        'react-router': { singleton: true },
+        'react-router-dom': { singleton: true }
       }
     })
   ]

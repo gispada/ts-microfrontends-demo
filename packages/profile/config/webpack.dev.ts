@@ -2,7 +2,7 @@ import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-co
 import { container } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-const PORT = 8081
+const PORT = 8082
 
 const devConfig: WebpackConfig = {
   mode: 'development',
@@ -12,6 +12,7 @@ const devConfig: WebpackConfig = {
   },
   devServer: {
     port: PORT,
+    historyApiFallback: true,
     hot: true
   },
   plugins: [
@@ -19,16 +20,19 @@ const devConfig: WebpackConfig = {
       template: './public/index.html'
     }),
     new container.ModuleFederationPlugin({
-      name: 'shared',
+      name: 'profile',
       filename: 'remoteEntry.js',
+      remotes: {
+        shared: 'shared@http://localhost:8081/remoteEntry.js'
+      },
       exposes: {
-        './Components': './src/Components'
+        './mount': './src/mount'
       },
       shared: {
         react: { singleton: true },
-        'react-dom': { singleton: true },
-        'react-router': { singleton: true },
-        'react-router-dom': { singleton: true }
+        'react-dom': { singleton: true }
+        // 'react-router': { singleton: true },
+        // 'react-router-dom': { singleton: true }
       }
     })
   ]

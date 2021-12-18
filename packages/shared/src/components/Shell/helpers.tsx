@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu } from 'antd'
 
 const { SubMenu } = Menu
@@ -17,7 +18,7 @@ type MenuConfig = {
 
 const createMenuItem = ({ href, icon, title }: MenuItem) => (
   <Menu.Item key={href} icon={icon}>
-    {title}
+    <Link to={href}>{title}</Link>
   </Menu.Item>
 )
 

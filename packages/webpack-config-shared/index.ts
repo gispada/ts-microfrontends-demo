@@ -44,7 +44,7 @@ const baseConfig: WebpackConfig = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [loadersMap.tsLoader]
+        use: [loadersMap.babelLoader]
       },
       {
         test: /\.js$/,
