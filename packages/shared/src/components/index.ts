@@ -11,5 +11,7 @@ export { Row, Col } from './Grid'
 export { Form } from './Form'
 export { Select } from './Select'
 export { Switch } from './Switch'
+export { Table } from './Table'
+export { Tag } from './Tag'
 
 export type { MenuItem } from './Shell/Menu'

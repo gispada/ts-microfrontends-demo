@@ -4,6 +4,10 @@ import styled from 'styled-components'
 export const StyledPageHeader = styled(PageHeader)`
   padding-left: 0;
 
+  .ant-page-header-heading-left {
+    height: 48px;
+  }
+
   .ant-avatar {
     height: 48px;
     width: 48px;
