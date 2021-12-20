@@ -1,6 +1,7 @@
 import React, { ReactNode, FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu as AntdMenu } from 'antd'
+import { last } from '../../utils'
 
 const { SubMenu } = AntdMenu
 
@@ -18,14 +19,25 @@ type MenuProps = {
 }
 
 const createMenuItem = ({ path, icon, title }: Omit<MenuItem, 'items'>) => (
-  <AntdMenu.Item icon={icon}>
+  <AntdMenu.Item key={path} icon={icon}>
     <Link to={path}>{title}</Link>
   </AntdMenu.Item>
 )
 
+// From '/seg1/seg2/seg3' to ['/seg1', '/seg1/seg2', '/seg1/seg2/seg3']
+const getKeysForCurrentRoute = (pathname: string) => {
+  const [, ...segments] = pathname.split('/')
+  return segments.reduce(
+    (acc, segment) => [...acc, [last(acc), segment].join('/')],
+    [] as string[]
+  )
+}
+
 const Menu: FC<MenuProps> = ({ theme, mode, items }) => {
+  const { pathname } = useLocation()
+
   return (
-    <AntdMenu theme={theme} mode={mode}>
+    <AntdMenu theme={theme} mode={mode} selectedKeys={getKeysForCurrentRoute(pathname)}>
       {items.map(({ items, ...rest }) => {
         if (items) {
           return (
