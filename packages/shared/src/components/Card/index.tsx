@@ -1,15 +1,15 @@
 import React, { FC } from 'react'
 import { StyledCard } from './styled'
+import type { CardProps } from 'antd'
 
 type Props = {
-  title?: string
-}
+  height?: number
+} & CardProps
 
-const Card: FC<Props> = ({ children, title }) => {
+const Card: FC<Props> = ({ children, height, ...props }) => {
   return (
-    <StyledCard>
-      {title && <h1>{title}</h1>}
-      <div>{children}</div>
+    <StyledCard {...props} cardHeight={height}>
+      {children}
     </StyledCard>
   )
 }
