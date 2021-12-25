@@ -4,7 +4,7 @@
     "module": "CommonJS", // https://webpack.js.org/guides/typescript/#loader ts-loader does not lazy load
     //"module": "ES6",
     //"moduleResolution": "Node",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "sourceMap": true,
     "target": "ES2018",
     "strict": true,
@@ -18,7 +18,7 @@
       "account/*": ["packages/account/src/*"]
     }
   },
-  "exclude": ["**/node_modules/**"],
+  "exclude": ["**/node_modules/**", "**/*.spec.ts"],
   "ts-node": {
     "files": true
   },

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack serve --config config/webpack.dev.ts"
+    "start": "webpack serve --config config/webpack.dev.ts",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
