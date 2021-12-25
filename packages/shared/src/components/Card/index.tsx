@@ -8,7 +8,7 @@ type Props = {
 
 const Card: FC<Props> = ({ children, height, ...props }) => {
   return (
-    <StyledCard {...props} cardHeight={height}>
+    <StyledCard {...props} $height={height}>
       {children}
     </StyledCard>
   )
