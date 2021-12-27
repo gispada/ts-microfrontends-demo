@@ -16,6 +16,8 @@
     "interpolate-html-plugin": "^4.0.0",
     "style-loader": "^3.3.1",
     "ts-loader": "9.2.6",
+    "vue-loader": "^17.0.0",
+    "vue-template-compiler": "^2.6.14",
     "webpack": "^5.65.0",
     "webpack-merge": "^5.8.0"
   }

@@ -6,3 +6,5 @@ declare module 'interpolate-html-plugin' {
 }
 
 declare module "*.png"
+
+declare module "*.vue"

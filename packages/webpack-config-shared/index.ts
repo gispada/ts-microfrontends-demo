@@ -2,6 +2,7 @@ import * as webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import InterpolateHtmlPlugin from 'interpolate-html-plugin'
 import DotEnv = require('dotenv-webpack')
+import { VueLoaderPlugin } from 'vue-loader'
 
 // Augment Webpack configuration with dev server options
 import 'webpack-dev-server'
@@ -38,7 +39,7 @@ const loadersMap: Record<string, webpack.RuleSetUseItem> = {
 
 const baseConfig: WebpackConfig = {
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue']
   },
   module: {
     rules: [
@@ -46,6 +47,10 @@ const baseConfig: WebpackConfig = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [loadersMap.babelLoader]
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
@@ -69,7 +74,8 @@ const baseConfig: WebpackConfig = {
     }), */
     new InterpolateHtmlPlugin({
       PUBLIC_URL: process.env.PUBLIC_URL
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 }
 
