@@ -1,14 +1,11 @@
-import React, { useContext, useEffect } from 'react'
-import { MenuContext } from '../context'
+import React from 'react'
+import DashboardRoutes from 'dashboard/routes'
+import { useRegisterMenuWithBasename } from '../context'
 
 const Dashboard = () => {
-  const registerMenu = useContext(MenuContext)
+  const registerMenuWithBasename = useRegisterMenuWithBasename()
 
-  useEffect(() => {
-    registerMenu([])
-  }, [])
-
-  return <h1>Dashboard</h1>
+  return <DashboardRoutes registerMenu={registerMenuWithBasename} />
 }
 
 export default Dashboard

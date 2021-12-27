@@ -1,4 +1,5 @@
-// export { default as memoizeOne } from 'memoize-one'
+import memoizeOne from 'memoize-one'
+
 export { v4 as uuid } from 'uuid'
 export { default as dayjs } from 'dayjs'
 
@@ -42,4 +43,12 @@ export function match<T extends { [key: string]: any }>(item: T) {
   }
 
   return { when: makeWhen(undefined) }
+}
+
+export const memoize = <T>(fn: (...args: any[]) => T, maxTime = 10000) => {
+  const memoizedFn = memoizeOne(fn)
+  setInterval(() => {
+    memoizedFn.clear()
+  }, maxTime)
+  return memoizedFn
 }

@@ -1,22 +1,23 @@
 import * as webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import InterpolateHtmlPlugin from 'interpolate-html-plugin'
+import DotEnv = require('dotenv-webpack')
 
 // Augment Webpack configuration with dev server options
 import 'webpack-dev-server'
 
-const REACT_APP = /^REACT_APP_/i
+/* const ENV = /^ENV_/i
 
 const getCustomEnv = () =>
   Object.keys(process.env)
-    .filter((key) => REACT_APP.test(key))
+    .filter((key) => ENV.test(key))
     .reduce(
       (acc, key) => ({
         ...acc,
         [key]: JSON.stringify(process.env[key])
       }),
       {}
-    )
+    ) */
 
 // Testing both loaders
 const loadersMap: Record<string, webpack.RuleSetUseItem> = {
@@ -62,9 +63,10 @@ const baseConfig: WebpackConfig = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
+    new DotEnv(),
+    /*   new webpack.DefinePlugin({
       'process.env': getCustomEnv()
-    }),
+    }), */
     new InterpolateHtmlPlugin({
       PUBLIC_URL: process.env.PUBLIC_URL
     })

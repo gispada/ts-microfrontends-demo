@@ -30,7 +30,8 @@ const devConfig: WebpackConfig = {
         'react-dom': { singleton: true },
         'react-router': { singleton: true },
         'react-router-dom': { singleton: true },
-        'styled-components': '^5.3.3'
+        'styled-components': '^5.3.3',
+        '@ant-design/icons': '^4.7.0'
       }
     })
   ]

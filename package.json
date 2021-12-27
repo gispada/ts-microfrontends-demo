@@ -6,11 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "remove:modules": "yarn workspaces exec ls -l ",
-    "lint:container": "yarn workspace @mfe-starter/container run lint",
-    "start:container": "yarn workspace @mfe-starter/container run start",
-    "start:child1": "yarn workspace @mfe-starter/child1 run start",
-    "start": "yarn workspaces run start",
+    "clear:node_modules": "rm -rf node_modules & wsrun exec rm -rf node_modules",
+    "start": "wsrun --exclude-missing start",
     "test": "jest"
   },
   "devDependencies": {
@@ -19,9 +16,12 @@
     "jest": "^27.4.5",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "wsrun": "^5.2.4"
   },
   "jest": {
-    "projects": ["<rootDir>/packages/*"]
+    "projects": [
+      "<rootDir>/packages/*"
+    ]
   }
 }

@@ -6,6 +6,7 @@ import {
   LineChart,
   Row,
   Col,
+  PageHeader,
   ChartType as C
 } from 'shared/components'
 import { match } from 'shared/utils'
@@ -25,8 +26,9 @@ const Sales = () => {
 
   return (
     <Container>
+      <PageHeader title="Sales overview" subTitle="Latest year trends" />
       {dashboardConfig.map(({ id, items }) => (
-        <Row key={id} gutter={[24, 24]}>
+        <Row $margins={{ bottom: 24 }} key={id} gutter={[24, 24]}>
           {items.map((item, i) => (
             <Col key={`${id}-${i}`} xs={24} md={24 / items.length}>
               <Card title={item.title}>{renderChart(item)}</Card>

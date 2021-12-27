@@ -6,8 +6,8 @@ export const topMenu: MenuItem[] = [
     path: '/'
   },
   {
-    title: 'Charts',
-    path: '/charts'
+    title: 'Dashboard',
+    path: '/dashboard'
   },
   {
     title: 'Account',

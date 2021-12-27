@@ -1,16 +1,23 @@
 import React, { FC, lazy, useEffect } from 'react'
-import { DollarOutlined } from '@ant-design/icons'
+import { LineChartOutlined, DatabaseOutlined } from '@ant-design/icons'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import type { RegisterMenuFn } from 'container/context'
 
 const Sales = lazy(() => import('./pages/Sales'))
+const Products = lazy(() => import('./pages/Products'))
 
 export const routesConfig = [
   {
     title: 'Sales',
     path: 'sales',
-    icon: <DollarOutlined />,
+    icon: <LineChartOutlined />,
     element: <Sales />
+  },
+  {
+    title: 'Products',
+    path: 'products',
+    icon: <DatabaseOutlined />,
+    element: <Products />
   }
 ]
 

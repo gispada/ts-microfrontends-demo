@@ -1,8 +1,7 @@
-import React, { useContext, useCallback } from 'react'
-import { useResolvedPath } from 'react-router-dom'
+import React from 'react'
 // import mount from 'account/mount'
 import AccountRoutes from 'account/routes'
-import { MenuContext, RegisterMenuFn } from '../context'
+import { useRegisterMenuWithBasename } from '../context'
 
 /* const Account = () => {
   const registerSideMenu = useContext(MenuContext)
@@ -16,19 +15,7 @@ import { MenuContext, RegisterMenuFn } from '../context'
 } */
 
 const Account = () => {
-  const registerMenu = useContext(MenuContext)
-  const { pathname } = useResolvedPath('') // Trick to get the base path
-
-  const registerMenuWithBasename = useCallback<RegisterMenuFn>(
-    (items) => {
-      const menu = items.map(({ path, ...rest }) => ({
-        path: `${pathname}/${path}`,
-        ...rest
-      }))
-      registerMenu(menu)
-    },
-    [pathname]
-  )
+  const registerMenuWithBasename = useRegisterMenuWithBasename()
 
   return <AccountRoutes registerMenu={registerMenuWithBasename} />
 }

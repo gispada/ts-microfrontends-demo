@@ -20,7 +20,7 @@ const devConfig: WebpackConfig = {
       template: './public/index.html'
     }),
     new container.ModuleFederationPlugin({
-      name: 'account',
+      name: 'dashboard',
       filename: 'remoteEntry.js',
       remotes: {
         shared: 'shared@http://localhost:8081/remoteEntry.js'
@@ -34,7 +34,8 @@ const devConfig: WebpackConfig = {
         'react-dom': { singleton: true },
         'react-router': { singleton: true },
         'react-router-dom': { singleton: true },
-        'styled-components': '^5.3.3'
+        'styled-components': '^5.3.3',
+        '@ant-design/icons': '^4.7.0'
       }
     })
   ]

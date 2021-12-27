@@ -17,7 +17,7 @@ function App() {
       <Shell logoUri={Logo} topMenu={topMenu} sideMenu={sideMenu}>
         <Suspense fallback={<Loader tip="Loading..." />}>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="dashboard/*" element={<Dashboard />} />
             <Route path="account/*" element={<Account />} />
           </Routes>
         </Suspense>

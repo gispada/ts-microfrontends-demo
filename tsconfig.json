@@ -15,7 +15,8 @@
     "paths": {
       "container/*": ["packages/container/src/*"],
       "shared/*": ["packages/shared/src/*"],
-      "account/*": ["packages/account/src/*"]
+      "account/*": ["packages/account/src/*"],
+      "dashboard/*": ["packages/dashboard/src/*"]
     }
   },
   "exclude": ["**/node_modules/**", "**/*.spec.ts"],
