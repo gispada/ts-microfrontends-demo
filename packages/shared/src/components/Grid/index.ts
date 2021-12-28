@@ -1,4 +1,5 @@
-import { Col } from 'antd'
+import { Col as AntdCol } from 'antd'
 import { StyledRow } from './styled'
 
-export { StyledRow as Row, Col }
+export const Col = AntdCol
+export const Row = StyledRow

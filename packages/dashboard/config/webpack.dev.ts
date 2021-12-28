@@ -1,6 +1,6 @@
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
 import { container } from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { dependencies } from '../package.json'
 
 const PORT = 8083
 
@@ -16,9 +16,6 @@ const devConfig: WebpackConfig = {
     hot: true
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    }),
     new container.ModuleFederationPlugin({
       name: 'dashboard',
       filename: 'remoteEntry.js',
@@ -30,12 +27,11 @@ const devConfig: WebpackConfig = {
         './routes': './src/routes'
       },
       shared: {
+        ...dependencies,
         react: { singleton: true },
         'react-dom': { singleton: true },
         'react-router': { singleton: true },
-        'react-router-dom': { singleton: true },
-        'styled-components': '^5.3.3',
-        '@ant-design/icons': '^4.7.0'
+        'react-router-dom': { singleton: true }
       }
     })
   ]

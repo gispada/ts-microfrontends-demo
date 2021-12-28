@@ -4,10 +4,10 @@ import mount from 'product/mount'
 
 const Product = () => {
   const ref = useRef(null)
-  // const { id } = useParams
+  const { id } = useParams()
 
   useEffect(() => {
-    return mount(ref.current!, { productId: '22' })
+    return mount(ref.current!, { productId: id! })
   })
 
   return <div ref={ref}></div>

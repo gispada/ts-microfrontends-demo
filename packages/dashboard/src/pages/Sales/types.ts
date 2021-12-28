@@ -1,4 +1,9 @@
-import { ChartType, BarChartProps, LineChartProps, PieChartProps } from 'shared/components'
+import {
+  ChartType,
+  BarChartProps,
+  LineChartProps,
+  PieChartProps
+} from 'shared/components/Charts'
 
 type BaseItem = {
   title: string

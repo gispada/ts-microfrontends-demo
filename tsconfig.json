@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "CommonJS", // https://webpack.js.org/guides/typescript/#loader ts-loader does not lazy load
-    //"module": "ES6",
-    //"moduleResolution": "Node",
+    //"module": "CommonJS", // https://webpack.js.org/guides/typescript/#loader ts-loader does not lazy load
+    "module": "es2020",
+    "moduleResolution": "Node",
     "types": ["node", "jest"],
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "ES2018",
     "strict": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "container/*": ["packages/container/src/*"],
       "shared/*": ["packages/shared/src/*"],
@@ -22,7 +25,10 @@
   },
   "exclude": ["**/node_modules/**", "**/*.spec.ts"],
   "ts-node": {
-    "files": true
+    "files": true,
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
   "files": ["types.d.ts"]
 }

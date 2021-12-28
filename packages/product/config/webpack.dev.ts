@@ -1,6 +1,7 @@
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
 import { container } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { dependencies } from '../package.json'
 
 const PORT = 8084
 
@@ -22,8 +23,15 @@ const devConfig: WebpackConfig = {
     new container.ModuleFederationPlugin({
       name: 'product',
       filename: 'remoteEntry.js',
+      remotes: {
+        shared: 'shared@http://localhost:8081/remoteEntry.js',
+      },
       exposes: {
         './mount': './src/mount'
+      },
+      shared: {
+        ...dependencies,
+        vue: { singleton: true }
       }
     })
   ]

@@ -10,8 +10,3 @@ const get = <T>(resource: string) =>
   fetch(`${baseUrl}/${resource}`).then((response) => response.json() as Promise<T>)
 
 export const getProducts = memoize(() => get<Product[]>('products'), MAX_CACHE_TIME)
-
-export const getProductById = memoize(
-  (id: string) => get<Product>(`products/${id}`),
-  MAX_CACHE_TIME
-)

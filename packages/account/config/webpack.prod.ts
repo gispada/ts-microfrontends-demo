@@ -1,19 +1,17 @@
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
+import path from 'path'
 import { container } from 'webpack'
 import { dependencies } from '../package.json'
 
-const PORT = 8082
+process.env.NODE_ENV = 'production'
 
-const devConfig: WebpackConfig = {
-  mode: 'development',
+const prodConfig: WebpackConfig = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
-    publicPath: `http://localhost:${PORT}/`
-  },
-  devServer: {
-    port: PORT,
-    historyApiFallback: true,
-    hot: true
+    path: path.resolve(__dirname, '../build'),
+    filename: 'static/js/[name].[contenthash:8].js',
+    chunkFilename: 'static/js/[name].[contenthash:8].chunk.js'
   },
   plugins: [
     new container.ModuleFederationPlugin({
@@ -37,4 +35,4 @@ const devConfig: WebpackConfig = {
   ]
 }
 
-export default createWebpackConfig(devConfig)
+export default createWebpackConfig(prodConfig)

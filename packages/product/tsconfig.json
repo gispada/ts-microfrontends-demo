@@ -2,8 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "build",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "exclude": ["**/@vue/**", "**/vue"],
+  "files": ["./src/mount.ts", "../../types.d.ts"]
 }

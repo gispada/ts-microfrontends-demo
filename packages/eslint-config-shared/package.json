@@ -1,6 +1,7 @@
 {
   "name": "@mfe-mono-starter/eslint-config-shared",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.7.0",

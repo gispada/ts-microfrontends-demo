@@ -1,4 +1,4 @@
-import { ChartType } from 'shared/components'
+import { ChartType } from 'shared/components/Charts'
 import { regionsData, salesData, trendsData } from './mock'
 import { DashboardConfig } from './types'
 

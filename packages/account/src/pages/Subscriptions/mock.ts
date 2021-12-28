@@ -1,4 +1,4 @@
-import { uuid } from 'shared/utils'
+import { v4 as uuid } from 'uuid'
 import type { Subscription } from './types'
 
 export const subscriptions: Subscription[] = [

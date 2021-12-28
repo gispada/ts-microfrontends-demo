@@ -15,6 +15,7 @@ export const StyledPageHeader = styled(PageHeader)`
 
   @media (max-width: 767px) {
     .ant-page-header-heading-left {
+      height: auto;
       flex-direction: column;
       align-items: flex-start;
 

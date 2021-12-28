@@ -1,7 +1,7 @@
 import React from 'react'
-import { TableColumnType } from 'antd'
-import { dayjs } from 'shared/utils'
+import dayjs from 'dayjs'
 import Status from './Status'
+import type { TableColumnType } from 'antd'
 import type { Subscription } from './types'
 
 export const columns: TableColumnType<Subscription>[] = [

@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-// import { StyledButton } from './styled'
 import { Button as AntdButton, ButtonProps } from 'antd'
 
 type Props = ButtonProps

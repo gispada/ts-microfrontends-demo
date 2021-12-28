@@ -32,7 +32,7 @@
 <script>
 export default {
   props: {
-    productId: Number,
+    productId: String,
   },
   data() {
     return {
@@ -40,7 +40,6 @@ export default {
     };
   },
   mounted() {
-    console.log(process.env.BASE_URL)
     fetch(`${process.env.BASE_URL}/products/${this.productId}`)
       .then((response) => response.json())
       .then((product) => {
@@ -68,7 +67,7 @@ export default {
   max-width: 100%;
 }
 .loader {
-  height: 100vh;
+  height: 100%;
 }
 .product-header {
   border: 1px solid rgb(235, 237, 240);

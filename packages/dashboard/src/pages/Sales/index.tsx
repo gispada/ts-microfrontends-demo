@@ -1,14 +1,6 @@
 import React from 'react'
-import {
-  Card,
-  BarChart,
-  PieChart,
-  LineChart,
-  Row,
-  Col,
-  PageHeader,
-  ChartType as C
-} from 'shared/components'
+import { Card, Row, Col, PageHeader } from 'shared/components'
+import { BarChart, PieChart, LineChart, ChartType as C } from 'shared/components/Charts'
 import { match } from 'shared/utils'
 import { Container } from '../../components/Container'
 import { dashboardConfig } from './config'

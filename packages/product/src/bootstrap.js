@@ -1,3 +1,3 @@
 import mount from './mount'
 
-mount('#root', { productId: 12 })
+mount('#root', { productId: '12' })

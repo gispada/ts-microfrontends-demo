@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { PageHeader, Table } from 'shared/components'
+import { PageHeader } from 'shared/components'
+import { Table } from 'shared/components/Table'
 import { Container } from '../../components/Container'
 import { getProducts } from '../../api'
 import { columns } from './config'

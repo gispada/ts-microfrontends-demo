@@ -1,30 +1,27 @@
-import { container } from 'webpack'
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
+import path from 'path'
+import { container } from 'webpack'
 import { dependencies } from '../package.json'
 
-const PORT = 8081
+process.env.NODE_ENV = 'production'
 
-const devConfig: WebpackConfig = {
-  mode: 'development',
+const prodConfig: WebpackConfig = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
-    publicPath: `http://localhost:${PORT}/`
-  },
-  devServer: {
-    port: PORT,
-    hot: true
+    path: path.resolve(__dirname, '../build'),
+    filename: 'static/js/[name].[contenthash:8].js',
+    chunkFilename: 'static/js/[name].[contenthash:8].chunk.js'
   },
   plugins: [
     new container.ModuleFederationPlugin({
       name: 'shared',
       filename: 'remoteEntry.js',
-      // Some of the components are split into separate chunks
       exposes: {
         './components': './src/components',
-        './components/Table': './src/components/Table',
-        './components/Charts': './src/components/Charts',
+        './components/charts': './src/components/charts',
         './components-vue': './src/components-vue',
-        './utils': './src/utils/index'
+        './utils': './src/utils'
       },
       shared: {
         ...dependencies,
@@ -38,4 +35,4 @@ const devConfig: WebpackConfig = {
   ]
 }
 
-export default createWebpackConfig(devConfig)
+export default createWebpackConfig(prodConfig)

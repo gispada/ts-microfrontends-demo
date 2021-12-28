@@ -1,6 +1,6 @@
 import React from 'react'
 import { TableColumnType } from 'antd'
-import { TableCellLink } from 'shared/components'
+import { TableCellLink } from 'shared/components/Table'
 import type { Product } from '../../api/types'
 
 export const columns: TableColumnType<Product>[] = [
