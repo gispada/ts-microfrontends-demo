@@ -1,3 +1,1 @@
-import { Select as AntdSelect } from 'antd'
-
-export const Select = AntdSelect
+export { Select } from 'antd'

@@ -4,9 +4,10 @@ import InterpolateHtmlPlugin from 'interpolate-html-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnv from 'dotenv-webpack'
 import { VueLoaderPlugin } from 'vue-loader'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import SimpleProgressWebpackPlugin from 'simple-progress-webpack-plugin'
 
 // Augment Webpack configuration with dev server options
 import 'webpack-dev-server'
@@ -30,22 +31,14 @@ const loadersMap: Record<string, webpack.RuleSetUseItem> = {
         '@babel/preset-typescript'
       ],
       plugins: [
-        '@babel/plugin-transform-runtime',
-        ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }, 'antd'],
-        [
-          'import',
-          {
-            libraryName: '@ant-design/icons',
-            libraryDirectory: 'es/icons',
-            camel2DashComponentName: false
-          },
-          'ant-design-icons'
-        ],
+        '@babel/plugin-transform-runtime'
+        // Uncomment to load css per component, instead of the entire Ant css; it has tradeoffs
+        /*  ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }, 'antd'],
         [
           'import',
           { libraryName: 'ant-design-vue', libraryDirectory: 'es', style: 'css' },
           'ant-design-vue'
-        ]
+        ] */
       ]
     }
   }
@@ -73,7 +66,6 @@ const getBaseConfig: () => WebpackConfig = () => {
           exclude: /node_modules/,
           use: ['babel-loader']
         },
-
         {
           test: /\.css$/i,
           use: isProd
@@ -96,12 +88,13 @@ const getBaseConfig: () => WebpackConfig = () => {
         template: './public/index.html'
       }),
       new VueLoaderPlugin(),
+      // new BundleAnalyzerPlugin(),
+      isProd && new SimpleProgressWebpackPlugin({ format: 'minimal' }),
       isProd &&
         new MiniCssExtractPlugin({
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
-        }),
-      new BundleAnalyzerPlugin()
+        })
     ].filter(isTruthy),
     // --------------- Optimizations section --------------- //
     ...(isProd && {

@@ -29,6 +29,7 @@ const Subscriptions = () => {
         dataSource={sortedSubscriptions}
         pagination={false}
         scroll={scroll}
+        rowKey="id"
       />
     </Container>
   )

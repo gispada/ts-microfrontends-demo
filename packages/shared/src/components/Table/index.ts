@@ -1,5 +1,2 @@
-import { Table as AntdTable } from 'antd'
-
-export const Table = AntdTable
-
+export { Table } from 'antd'
 export { default as TableCellLink } from './TableCellLink'

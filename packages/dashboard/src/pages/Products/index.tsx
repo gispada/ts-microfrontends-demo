@@ -23,6 +23,7 @@ const Products = () => {
         columns={columns}
         dataSource={data}
         scroll={scroll}
+        rowKey="id"
       />
     </Container>
   )

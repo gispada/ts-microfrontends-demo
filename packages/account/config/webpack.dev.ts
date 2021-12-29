@@ -1,6 +1,6 @@
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
 import { container } from 'webpack'
-import { dependencies } from '../package.json'
+import { exposedModules, sharedDeps } from './common'
 
 const PORT = 8082
 
@@ -22,17 +22,8 @@ const devConfig: WebpackConfig = {
       remotes: {
         shared: 'shared@http://localhost:8081/remoteEntry.js'
       },
-      exposes: {
-        './mount': './src/mount',
-        './routes': './src/routes'
-      },
-      shared: {
-        ...dependencies,
-        react: { singleton: true },
-        'react-dom': { singleton: true },
-        'react-router': { singleton: true },
-        'react-router-dom': { singleton: true }
-      }
+      exposes: exposedModules,
+      shared: sharedDeps
     })
   ]
 }

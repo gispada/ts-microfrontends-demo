@@ -13,10 +13,10 @@ const prodConfig: WebpackConfig = {
   },
   plugins: [
     new container.ModuleFederationPlugin({
-      name: 'account',
+      name: 'product',
       filename: 'remoteEntry.js',
       remotes: {
-        shared: 'shared@http://remotehost:8081/remoteEntry.js'
+        shared: 'shared@http://localhost:8081/remoteEntry.js',
       },
       exposes: exposedModules,
       shared: sharedDeps

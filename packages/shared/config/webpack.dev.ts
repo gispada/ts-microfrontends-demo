@@ -1,6 +1,6 @@
 import { container } from 'webpack'
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
-import { dependencies } from '../package.json'
+import { exposedModules, sharedDeps } from './common'
 
 const PORT = 8081
 
@@ -18,22 +18,8 @@ const devConfig: WebpackConfig = {
     new container.ModuleFederationPlugin({
       name: 'shared',
       filename: 'remoteEntry.js',
-      // Some of the components are split into separate chunks
-      exposes: {
-        './components': './src/components',
-        './components/Table': './src/components/Table',
-        './components/Charts': './src/components/Charts',
-        './components-vue': './src/components-vue',
-        './utils': './src/utils/index'
-      },
-      shared: {
-        ...dependencies,
-        react: { singleton: true },
-        'react-dom': { singleton: true },
-        'react-router': { singleton: true },
-        'react-router-dom': { singleton: true },
-        vue: { singleton: true }
-      }
+      exposes: exposedModules,
+      shared: sharedDeps
     })
   ]
 }

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack serve --config config/webpack.dev.ts",
-    "build": "rm -rf build && webpack --config config/webpack.prod.ts",
+    "start": "NODE_ENV=development webpack serve --config config/webpack.dev.ts",
+    "build": "rm -rf build && NODE_ENV=production webpack --config config/webpack.prod.ts",
     "test": "jest"
   },
   "devDependencies": {

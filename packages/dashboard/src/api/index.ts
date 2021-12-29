@@ -2,8 +2,8 @@ import { memoize } from 'shared/utils'
 import type { Product } from './types'
 
 const MAX_CACHE_TIME = 60 * 1000
+const BASE_URL = process.env.BASE_URL || ''
 
-const { BASE_URL = '' } = process.env
 const baseUrl = BASE_URL.endsWith('/') ? BASE_URL.substring(0, BASE_URL.length - 1) : BASE_URL
 
 const get = <T>(resource: string) =>

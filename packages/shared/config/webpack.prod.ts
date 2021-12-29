@@ -1,9 +1,7 @@
 import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
 import path from 'path'
 import { container } from 'webpack'
-import { dependencies } from '../package.json'
-
-process.env.NODE_ENV = 'production'
+import { exposedModules, sharedDeps } from './common'
 
 const prodConfig: WebpackConfig = {
   mode: 'production',
@@ -17,20 +15,8 @@ const prodConfig: WebpackConfig = {
     new container.ModuleFederationPlugin({
       name: 'shared',
       filename: 'remoteEntry.js',
-      exposes: {
-        './components': './src/components',
-        './components/charts': './src/components/charts',
-        './components-vue': './src/components-vue',
-        './utils': './src/utils'
-      },
-      shared: {
-        ...dependencies,
-        react: { singleton: true },
-        'react-dom': { singleton: true },
-        'react-router': { singleton: true },
-        'react-router-dom': { singleton: true },
-        vue: { singleton: true }
-      }
+      exposes: exposedModules,
+      shared: sharedDeps
     })
   ]
 }
