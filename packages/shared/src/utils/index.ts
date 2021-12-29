@@ -49,3 +49,6 @@ export const memoize = <T>(fn: (...args: any[]) => T, maxTime = 10000) => {
   }, maxTime)
   return memoizedFn
 }
+
+export const capitalize = ([first, ...rest]: string) =>
+  `${first.toUpperCase()}${rest.join('')}`

@@ -21,6 +21,10 @@ export const RootLayout = styled(Layout)`
 
   .content-wrapper {
     margin: 0 16px;
+
+    .breadcrumbs {
+      margin: 16px 0;
+    }
   }
 
   .content {
