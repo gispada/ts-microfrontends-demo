@@ -40,7 +40,8 @@ export default {
     };
   },
   mounted() {
-    fetch(`${process.env.BASE_URL}/products/${this.productId}`)
+    const productId = this.productId || location.pathname.split("/")[1] || "1"; // Quick way to work in isolation
+    fetch(`${process.env.BASE_URL}/products/${productId}`)
       .then((response) => response.json())
       .then((product) => {
         this.product = product;
