@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-mono-starter/prettier-config-shared",
+  "name": "@tsmfe-demo/prettier-config-shared",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",

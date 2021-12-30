@@ -1,7 +1,8 @@
 {
-  "name": "mfe-mono-starter",
+  "name": "tsmfe-demo",
   "version": "1.0.0",
   "private": true,
+  "description": "Project to experiment with microfrontends using Webpack Module Federation and TypeScript",
   "workspaces": [
     "packages/*"
   ],

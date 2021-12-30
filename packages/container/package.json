@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-mono-starter/container",
+  "name": "@tsmfe-demo/container",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

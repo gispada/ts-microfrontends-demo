@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-mono-starter/webpack-config-shared",
+  "name": "@tsmfe-demo/webpack-config-shared",
   "version": "1.0.0",
   "private": true,
   "devDependencies": {

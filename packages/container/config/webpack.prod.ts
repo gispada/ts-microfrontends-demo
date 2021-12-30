@@ -1,4 +1,4 @@
-import createWebpackConfig, { WebpackConfig } from '@mfe-mono-starter/webpack-config-shared'
+import createWebpackConfig, { WebpackConfig } from '@tsmfe-demo/webpack-config-shared'
 import path from 'path'
 import { container } from 'webpack'
 import { sharedDeps } from './common'

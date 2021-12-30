@@ -1,5 +1,5 @@
 {
-  "name": "@mfe-mono-starter/eslint-config-shared",
+  "name": "@tsmfe-demo/eslint-config-shared",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
