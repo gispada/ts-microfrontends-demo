@@ -52,3 +52,6 @@ export const memoize = <T>(fn: (...args: any[]) => T, maxTime = 10000) => {
 
 export const capitalize = ([first, ...rest]: string) =>
   `${first.toUpperCase()}${rest.join('')}`
+
+export const take = <T>(array: T[], n = 1) =>
+  n >= array.length ? array : Array.from({ length: n }).map((_, i) => array[i])

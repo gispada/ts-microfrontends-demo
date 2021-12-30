@@ -7,7 +7,7 @@ const Product = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    return mount(ref.current!, { productId: id! })
+    return mount(ref.current!, { productId: id })
   })
 
   return <div ref={ref}></div>

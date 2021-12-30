@@ -1,4 +1,4 @@
-import { match, sortBy } from '../index'
+import { match, sortBy, capitalize, take } from '../index'
 
 describe('match() function', () => {
   type Item =
@@ -71,6 +71,7 @@ describe('sortBy() function', () => {
     { order: 9, name: 'C' },
     { order: 42, name: 'D' }
   ]
+
   it('Correctly sorts by ascending order', () => {
     const expected = [
       { order: 9, name: 'C' },
@@ -89,5 +90,33 @@ describe('sortBy() function', () => {
       { order: 9, name: 'C' }
     ]
     expect(sortBy(toSort, 'order', 'desc')).toEqual(expected)
+  })
+})
+
+describe('capitalize() function', () => {
+  it('Correctly capitalizes a word', () => {
+    expect(capitalize('hello')).toEqual('Hello')
+  })
+
+  it('Correctly capitalizes a sentence', () => {
+    expect(capitalize('hello world')).toEqual('Hello world')
+  })
+})
+
+describe('take() function', () => {
+  it('Correctly takes the specified number of items', () => {
+    expect(take([1, 2, 3, 4, 5], 2)).toEqual([1, 2])
+  })
+
+  it('Correctly takes the specified number of items - default value', () => {
+    expect(take([1, 2, 3, 4, 5])).toEqual([1])
+  })
+
+  it('Returns empty array when 0 items are taken', () => {
+    expect(take([1, 2, 3, 4, 5], 0)).toEqual([])
+  })
+
+  it('Takes all items when the specified number is greater than the array length', () => {
+    expect(take([1, 2, 3, 4, 5], 100)).toEqual([1, 2, 3, 4, 5])
   })
 })

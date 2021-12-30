@@ -20,7 +20,8 @@ const devConfig: WebpackConfig = {
       name: 'dashboard',
       filename: 'remoteEntry.js',
       remotes: {
-        shared: 'shared@http://localhost:8081/remoteEntry.js'
+        shared: 'shared@http://localhost:8081/remoteEntry.js',
+        product: 'product@http://localhost:8084/remoteEntry.js'
       },
       exposes: exposedModules,
       shared: sharedDeps

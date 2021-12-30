@@ -21,8 +21,7 @@ const devConfig: WebpackConfig = {
       remotes: {
         shared: 'shared@http://localhost:8081/remoteEntry.js',
         account: 'account@http://localhost:8082/remoteEntry.js',
-        dashboard: 'dashboard@http://localhost:8083/remoteEntry.js',
-        product: 'product@http://localhost:8084/remoteEntry.js'
+        dashboard: 'dashboard@http://localhost:8083/remoteEntry.js'
       },
       shared: sharedDeps
     })
