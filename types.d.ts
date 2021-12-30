@@ -8,3 +8,10 @@ declare module 'interpolate-html-plugin' {
 declare module "*.png"
 
 declare module "*.vue"
+
+// Workaround to avoid importing Vue types when connecting packages with "paths"
+// @vue/runtime-dom modifies the global JSX namespace, conflicting with React
+// Is there a better solution?
+declare module 'product/mount' {
+  export default function mount(el: HTMLElement, params: { productId?: string }): () => void
+}

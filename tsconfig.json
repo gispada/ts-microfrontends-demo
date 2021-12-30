@@ -20,7 +20,7 @@
       "shared/*": ["packages/shared/src/*"],
       "account/*": ["packages/account/src/*"],
       "dashboard/*": ["packages/dashboard/src/*"],
-      "product/*": ["packages/product/src/*"],
+      //"product/*": ["packages/product/src/*"],
     }
   },
   "exclude": ["**/node_modules/**", "**/*.spec.ts"],
