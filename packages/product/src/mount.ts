@@ -3,7 +3,7 @@ import { Button, PageHeader, Tag, Rate, Row, Col, Statistic, Spin } from 'shared
 import App from './App.vue'
 
 type ProductParams = {
-  productId: string
+  productId?: string
 }
 
 function mount(el: HTMLElement, params: ProductParams) {

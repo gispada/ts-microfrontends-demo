@@ -2,8 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "build",
-    "skipLibCheck": true
   },
-  "exclude": ["**/@vue/**", "**/vue"],
   "files": ["./src/mount.ts", "../../types.d.ts"]
 }
