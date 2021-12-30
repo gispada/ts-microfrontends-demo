@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "clear:node_modules": "rm -rf node_modules & wsrun exec rm -rf node_modules",
+    "clear:node_modules": "wsrun exec rm -- -rf node_modules && rm -rf node_modules",
     "start": "wsrun --exclude-missing start",
     "test": "jest"
   },
