@@ -1,6 +1,14 @@
 import React, { ChangeEvent, ElementType } from 'react'
-import { Row, Col, Form, Input, Button, Select, PageHeader } from 'shared/components'
-import { Container } from '../../components/Container'
+import {
+  Row,
+  Col,
+  Form,
+  Input,
+  Button,
+  Select,
+  PageHeader,
+  Container
+} from 'shared/components'
 import { config, initialValues } from './config'
 
 const { Option } = Select
@@ -44,7 +52,7 @@ const Profile = () => {
     ))
 
   return (
-    <Container>
+    <Container maxWidth={960}>
       <PageHeader
         avatar={{ src: 'https://i.pravatar.cc/300' }}
         title="Your personal profile"

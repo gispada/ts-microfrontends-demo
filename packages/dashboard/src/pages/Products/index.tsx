@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { PageHeader } from 'shared/components'
+import { PageHeader, Container } from 'shared/components'
 import { Table } from 'shared/components/Table'
-import { Container } from '../../components/Container'
 import { getProducts } from '../../api'
 import { columns } from './config'
 import type { Product } from '../../api/types'
@@ -16,7 +15,7 @@ const Products = () => {
   }, [])
 
   return (
-    <Container>
+    <Container maxWidth={1200}>
       <PageHeader title="Products on sale" />
       <Table
         loading={data === undefined}

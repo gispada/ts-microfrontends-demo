@@ -1,9 +1,8 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { PageHeader } from 'shared/components'
+import { PageHeader, Container } from 'shared/components'
 import { Table } from 'shared/components/Table'
 import { sortBy } from 'shared/utils'
-import { Container } from '../../components/Container'
 import { columns } from './config'
 import { subscriptions } from './mock'
 
@@ -17,7 +16,7 @@ const Subscriptions = () => {
   )?.timestamp
 
   return (
-    <Container>
+    <Container maxWidth={960}>
       <PageHeader
         title="Your subscriptions"
         subTitle={`Last payment: ${
