@@ -1,6 +1,7 @@
 name: Shared package deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
