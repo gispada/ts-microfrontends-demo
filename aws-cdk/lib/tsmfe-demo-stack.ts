@@ -19,8 +19,7 @@ export class TsMfeDemoStack extends Stack {
         versioned: false,
         removalPolicy: RemovalPolicy.DESTROY,
         publicReadAccess: false,
-        blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
-
+        blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
       })
 
       const originAccessIdentity = new cloudfront.OriginAccessIdentity(this, `OAI-${name}`, {
