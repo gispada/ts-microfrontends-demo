@@ -16,7 +16,30 @@ const prodConfig: WebpackConfig = {
       name: 'account',
       filename: 'remoteEntry.js',
       remotes: {
-        shared: 'shared@https://dixtedjbx15rm.cloudfront.net/remoteEntry.js' // Hardcoded, for now
+        shared: `promise new Promise(resolve => {
+          fetch('https://d2p6xbnv41nqti.cloudfront.net/remotesMap.json')
+            .then(response => response.json())
+            .then(({ shared }) => {
+              console.log('Shared remote:', shared)
+              const script = document.createElement('script')
+              script.src = shared.url
+              script.onload = () => {
+                const proxy = {
+                  get: (request) => window.shared.get(request),
+                  init: (arg) => {
+                    try {
+                      return window.shared.init(arg)
+                    } catch (e) {
+                      console.log('Remote container already initialized')
+                    }
+                  }
+                }
+                resolve(proxy)
+              }
+              document.head.appendChild(script)
+            })
+        })
+      `
       },
       exposes: exposedModules,
       shared: sharedDeps
