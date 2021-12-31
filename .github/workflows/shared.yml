@@ -17,8 +17,10 @@ jobs:
     environment: shared_production
 
     steps:
-      - name: Build
+      - name: Checkout branch
         uses: actions/checkout@v2
+
+      - name: Build
         run: |
           yarn
           yarn build
