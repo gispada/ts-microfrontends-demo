@@ -21,7 +21,7 @@ export class TsMfeDemoStack extends Stack {
 
     const remotesMap = resources.reduce((acc, { name, distribution }) => ({
       ...acc,
-      [name]: { url: `${distribution.domainName}/remoteEntry.js` }
+      [name]: { url: `https://${distribution.domainName}/remoteEntry.js` }
     }), {} as RemotesMap)
 
     resourceStringToS3(this, 'WriteRemotesMapToS3', {
