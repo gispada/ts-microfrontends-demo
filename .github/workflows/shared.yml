@@ -1,4 +1,4 @@
-name: "Shared" deploy
+name: '"Shared" deploy'
 
 on:
   workflow_dispatch:

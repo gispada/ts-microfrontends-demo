@@ -1,4 +1,4 @@
-name: "Account" deploy
+name: '"Account" deploy'
 
 on:
   workflow_dispatch:
