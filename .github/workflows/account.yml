@@ -1,4 +1,4 @@
-name: "Shared" deploy
+name: "Account" deploy
 
 on:
   workflow_dispatch:
@@ -6,16 +6,16 @@ on:
     branches:
       - main
     paths:
-      - 'packages/shared/**'
+      - 'packages/account/**'
 
 defaults:
   run:
-    working-directory: packages/shared
+    working-directory: packages/account
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    environment: shared_production
+    environment: account_production
 
     steps:
       - name: Checkout branch
@@ -38,7 +38,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         uses: reggionick/s3-deploy@v3
         with:
-          folder: ./packages/shared/build
+          folder: ./packages/account/build
           bucket: ${{ secrets.S3_BUCKET }}
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           bucket-region: eu-central-1
