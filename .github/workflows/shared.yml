@@ -19,8 +19,9 @@ jobs:
     steps:
       - name: Build
         uses: actions/checkout@v2
-        run: yarn
-        run: yarn build
+        run: |
+          yarn
+          yarn build
 
       - name: Deploy to AWS
         env:
