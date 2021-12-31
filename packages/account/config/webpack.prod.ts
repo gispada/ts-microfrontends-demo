@@ -16,7 +16,7 @@ const prodConfig: WebpackConfig = {
       name: 'account',
       filename: 'remoteEntry.js',
       remotes: {
-        shared: 'shared@http://remotehost:8081/remoteEntry.js'
+        shared: 'shared@https://dixtedjbx15rm.cloudfront.net/remoteEntry.js' // Hardcoded, for now
       },
       exposes: exposedModules,
       shared: sharedDeps
