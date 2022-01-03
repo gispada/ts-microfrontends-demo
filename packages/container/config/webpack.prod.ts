@@ -1,4 +1,7 @@
-import createWebpackConfig, { WebpackConfig } from '@tsmfe-demo/webpack-config-shared'
+import createWebpackConfig, {
+  WebpackConfig,
+  getDynamicRemote
+} from '@tsmfe-demo/webpack-config-shared'
 import path from 'path'
 import { container } from 'webpack'
 import { sharedDeps } from './common'
@@ -15,9 +18,9 @@ const prodConfig: WebpackConfig = {
     new container.ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        shared: 'shared@http://localhost:8081/remoteEntry.js',
-        account: 'account@http://localhost:8082/remoteEntry.js',
-        dashboard: 'dashboard@http://localhost:8083/remoteEntry.js'
+        shared: getDynamicRemote('shared'),
+        account: getDynamicRemote('account'),
+        dashboard: getDynamicRemote('dashboard')
       },
       shared: sharedDeps
     })

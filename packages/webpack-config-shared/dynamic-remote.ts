@@ -9,7 +9,6 @@ export const getDynamicRemote = (name: tsmfe.Package['name']) => {
     );
     getRemotesMap().then((remotesMap) => {
       const remoteConfig = remotesMap.${name};
-      console.log('Remote config [${name}]:', remoteConfig);
       const script = document.createElement('script');
       script.src = remoteConfig.url;
       script.onload = () => {
