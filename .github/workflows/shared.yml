@@ -44,3 +44,4 @@ jobs:
           bucket-region: eu-central-1
           private: true
           delete-removed: true
+          invalidation: /*
