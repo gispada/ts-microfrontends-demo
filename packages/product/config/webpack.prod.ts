@@ -1,4 +1,4 @@
-import createWebpackConfig, { WebpackConfig } from '@tsmfe-demo/webpack-config-shared'
+import createWebpackConfig, { WebpackConfig, getDynamicRemote } from '@tsmfe-demo/webpack-config-shared'
 import path from 'path'
 import { container } from 'webpack'
 import { exposedModules, sharedDeps } from './common'
@@ -16,7 +16,7 @@ const prodConfig: WebpackConfig = {
       name: 'product',
       filename: 'remoteEntry.js',
       remotes: {
-        shared: 'shared@http://localhost:8081/remoteEntry.js',
+        shared: getDynamicRemote('shared')
       },
       exposes: exposedModules,
       shared: sharedDeps

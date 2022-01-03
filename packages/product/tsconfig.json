@@ -1,7 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "build",
+    "outDir": "build"
   },
-  "files": ["./src/mount.ts", "../../types.d.ts"]
+  "include": [
+    "config",
+    "src"
+  ],
+  "files": [
+    "../../types.d.ts"
+  ]
 }
