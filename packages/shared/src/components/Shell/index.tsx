@@ -1,10 +1,11 @@
-import React, { useState, FC } from 'react'
+import React, { useState, useMemo, FC } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Layout, Breadcrumb, Grid } from 'antd'
-import { HomeOutlined, MenuOutlined } from '@ant-design/icons'
-import { capitalize, first, last } from '../../utils'
+import { Layout, Grid } from 'antd'
+import { MenuOutlined } from '@ant-design/icons'
+import { first, last } from '../../utils'
 import Menu, { MenuItem } from './Menu'
 import NavigationMenu from './NavigationMenu'
+import Breadcrumbs from './Breadcrumbs'
 import { RootLayout } from './styled'
 
 const { useBreakpoint } = Grid
@@ -33,29 +34,16 @@ const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
   const { pathname } = useLocation()
   const routeKeys = getKeysForCurrentRoute(pathname)
 
-  const renderBreadcrumbs = () => (
-    <Breadcrumb className="breadcrumbs">
-      <Breadcrumb.Item>
-        <HomeOutlined />
-      </Breadcrumb.Item>
-      {pathname
-        .split('/')
-        .filter(Boolean)
-        .map((key) => (
-          <Breadcrumb.Item key={key}>{capitalize(key)}</Breadcrumb.Item>
-        ))}
-    </Breadcrumb>
-  )
-
-  const getSideMenuItems = () => {
+  const sideMenuItems = useMemo(() => {
     if (md) return sideMenu
-    // Add child routes to top level routes
-    return topMenu.map((item) =>
-      first(routeKeys) === item.path && sideMenu.length > 0
-        ? { ...item, items: sideMenu }
-        : item
+
+    // Add child routes to top level routes, for the drawer
+    if (!sideMenu || sideMenu.length === 0) return topMenu
+
+    return topMenu?.map((item) =>
+      first(routeKeys) === item.path ? { ...item, items: sideMenu } : item
     )
-  }
+  }, [md, pathname, topMenu, sideMenu])
 
   return (
     <RootLayout>
@@ -74,16 +62,18 @@ const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
       </Header>
 
       <Layout>
-        <NavigationMenu
-          menu={getSideMenuItems()}
-          selectedKeys={routeKeys}
-          type={md ? 'sider' : 'drawer'}
-          drawerOpen={drawerOpen}
-          onCloseDrawer={() => setDrawerOpen(false)}
-        />
+        {sideMenuItems && (
+          <NavigationMenu
+            menu={sideMenuItems}
+            selectedKeys={routeKeys}
+            type={md ? 'sider' : 'drawer'}
+            drawerOpen={drawerOpen}
+            onCloseDrawer={() => setDrawerOpen(false)}
+          />
+        )}
         <Layout>
           <Content className="content-wrapper">
-            {renderBreadcrumbs()}
+            <Breadcrumbs pathname={pathname} />
             <div className="content">{children}</div>
           </Content>
           <Footer className="footer">Microfrontend with TypeScript</Footer>
