@@ -15,3 +15,12 @@ declare module "*.vue"
 declare module 'product/mount' {
   export default function mount(el: HTMLElement, params: { productId?: string }): () => void
 }
+
+declare namespace tsmfe {
+  type Package = {
+    name: 'container' | 'account' | 'dashboard' | 'product' | 'shared'
+    cors?: boolean
+  }
+
+  type RemotesMap = Record<Package['name'], { url: string }>
+}
