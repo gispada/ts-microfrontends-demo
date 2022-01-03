@@ -4,7 +4,7 @@ import InterpolateHtmlPlugin from 'interpolate-html-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnv from 'dotenv-webpack'
 import { VueLoaderPlugin } from 'vue-loader'
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import SimpleProgressWebpackPlugin from 'simple-progress-webpack-plugin'
@@ -48,6 +48,7 @@ const loadersMap: Record<string, webpack.RuleSetUseItem> = {
 
 const getBaseConfig: () => WebpackConfig = () => {
   const isProd = process.env.NODE_ENV === 'production'
+  const analyzeBundle = !!process.env.ANALYZE
   return {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue']
@@ -90,13 +91,13 @@ const getBaseConfig: () => WebpackConfig = () => {
         template: './public/index.html'
       }),
       new VueLoaderPlugin(),
-      // new BundleAnalyzerPlugin(),
       isProd && new SimpleProgressWebpackPlugin({ format: 'minimal' }),
       isProd &&
         new MiniCssExtractPlugin({
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
-        })
+        }),
+      analyzeBundle && new BundleAnalyzerPlugin()
     ].filter(isTruthy),
     // --------------- Optimizations section --------------- //
     ...(isProd && {
