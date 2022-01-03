@@ -52,7 +52,7 @@ const Profile = () => {
     ))
 
   return (
-    <Container maxWidth={960}>
+    <Container maxWidth={960} noHorizontalScroll>
       <PageHeader
         avatar={{ src: 'https://i.pravatar.cc/300' }}
         title="Your personal profile"
