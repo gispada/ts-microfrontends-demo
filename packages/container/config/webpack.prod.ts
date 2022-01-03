@@ -10,6 +10,7 @@ const prodConfig: WebpackConfig = {
   mode: 'production',
   entry: './src/index.js',
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, '../build'),
     filename: 'static/js/[name].[contenthash:8].js',
     chunkFilename: 'static/js/[name].[contenthash:8].chunk.js'
