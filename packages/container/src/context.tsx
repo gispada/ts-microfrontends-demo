@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext } from 'react'
 import { useResolvedPath } from 'react-router-dom'
 import type { MenuItem } from 'shared/components'
 
-export type RegisterMenuFn = (items: MenuItem[]) => void
+export type RegisterMenuFn = (items?: MenuItem[]) => void
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {}
@@ -16,7 +16,7 @@ export const useRegisterMenuWithBasename = () => {
 
   const registerMenuWithBasename = useCallback<RegisterMenuFn>(
     (items) => {
-      const menu = items.map(({ path, ...rest }) => ({
+      const menu = items?.map(({ path, ...rest }) => ({
         path: `${pathname}/${path}`,
         ...rest
       }))

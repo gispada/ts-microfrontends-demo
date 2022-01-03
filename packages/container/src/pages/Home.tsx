@@ -6,7 +6,7 @@ const Home = () => {
   const registerMenu = useContext(MenuContext)
 
   useEffect(() => {
-    registerMenu([])
+    registerMenu([]) // Empty menu sidebar, for now
   }, [])
 
   return (
