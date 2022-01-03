@@ -22,7 +22,10 @@ module.exports = {
   rules: {
     'spaced-comment': 1,
     '@typescript-eslint/no-non-null-assertion': 0,
-    '@typescript-eslint/no-unused-vars': [1, { ignoreRestSiblings: true }],
+    '@typescript-eslint/no-unused-vars': [
+      1,
+      { ignoreRestSiblings: true, argsIgnorePattern: '^_' }
+    ],
     '@typescript-eslint/no-explicit-any': 0
     // 'react/prop-types': 0,
     // 'react/react-in-jsx-scope': 0

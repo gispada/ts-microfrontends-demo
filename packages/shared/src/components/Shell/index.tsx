@@ -1,12 +1,15 @@
 import React, { useState, FC } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Layout, Breadcrumb } from 'antd'
-import { HomeOutlined } from '@ant-design/icons'
-import { capitalize, last } from '../../utils'
+import { Layout, Breadcrumb, Grid } from 'antd'
+import { HomeOutlined, MenuOutlined } from '@ant-design/icons'
+import { capitalize, first, last } from '../../utils'
 import Menu, { MenuItem } from './Menu'
+import NavigationMenu from './NavigationMenu'
 import { RootLayout } from './styled'
 
-const { Header, Content, Footer, Sider } = Layout
+const { useBreakpoint } = Grid
+
+const { Header, Content, Footer } = Layout
 
 type Props = {
   logoUri?: string
@@ -24,8 +27,9 @@ const getKeysForCurrentRoute = (pathname: string) => {
 }
 
 const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
-  const [menuCollapsed, setMenuCollapsed] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
+  const { md } = useBreakpoint()
   const { pathname } = useLocation()
   const routeKeys = getKeysForCurrentRoute(pathname)
 
@@ -43,24 +47,40 @@ const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
     </Breadcrumb>
   )
 
+  const getSideMenuItems = () => {
+    if (md) return sideMenu
+    // Add child routes to top level routes
+    return topMenu.map((item) =>
+      first(routeKeys) === item.path && sideMenu.length > 0
+        ? { ...item, items: sideMenu }
+        : item
+    )
+  }
+
   return (
     <RootLayout>
       <Header className="header">
+        <div className="hamburger-menu" onClick={() => setDrawerOpen(true)}>
+          <MenuOutlined />
+        </div>
         <div className="logo">
           <img src={logoUri} alt="Logo" />
         </div>
-        {topMenu && (
+        {md && topMenu && (
           <div className="top-menu">
             <Menu theme="dark" mode="horizontal" items={topMenu} selectedKeys={routeKeys} />
           </div>
         )}
       </Header>
+
       <Layout>
-        {sideMenu && (
-          <Sider collapsible collapsed={menuCollapsed} onCollapse={setMenuCollapsed}>
-            <Menu theme="dark" mode="inline" items={sideMenu} selectedKeys={routeKeys} />
-          </Sider>
-        )}
+        <NavigationMenu
+          menu={getSideMenuItems()}
+          selectedKeys={routeKeys}
+          type={md ? 'sider' : 'drawer'}
+          drawerOpen={drawerOpen}
+          onCloseDrawer={() => setDrawerOpen(false)}
+        />
         <Layout>
           <Content className="content-wrapper">
             {renderBreadcrumbs()}

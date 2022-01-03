@@ -15,7 +15,10 @@ type MenuProps = {
   items: MenuItem[]
   theme: 'dark' | 'light'
   mode: 'vertical' | 'horizontal' | 'inline'
+  sticky?: boolean
   selectedKeys?: string[]
+  defaultOpenKeys?: string[]
+  onItemClick?: (key: string) => void
 }
 
 const createMenuItem = ({ path, icon, title }: Omit<MenuItem, 'items'>) => (
@@ -24,9 +27,24 @@ const createMenuItem = ({ path, icon, title }: Omit<MenuItem, 'items'>) => (
   </AntdMenu.Item>
 )
 
-const Menu: FC<MenuProps> = ({ theme, mode, items, selectedKeys }) => {
+const Menu: FC<MenuProps> = ({
+  theme,
+  mode,
+  items,
+  selectedKeys,
+  defaultOpenKeys,
+  sticky,
+  onItemClick
+}) => {
   return (
-    <AntdMenu theme={theme} mode={mode} selectedKeys={selectedKeys}>
+    <AntdMenu
+      theme={theme}
+      mode={mode}
+      selectedKeys={selectedKeys}
+      defaultOpenKeys={defaultOpenKeys}
+      onClick={({ key }) => onItemClick?.(key)}
+      className={sticky ? 'sticky' : undefined}
+    >
       {items.map(({ items, ...rest }) => {
         if (items) {
           return (
