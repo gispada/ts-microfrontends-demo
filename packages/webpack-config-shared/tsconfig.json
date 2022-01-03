@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "files": [
     "index.ts",
+    "dynamic-remote.ts",
     "../../types.d.ts",
   ]
 }

@@ -12,6 +12,8 @@ import SimpleProgressWebpackPlugin from 'simple-progress-webpack-plugin'
 // Augment Webpack configuration with dev server options
 import 'webpack-dev-server'
 
+export { getDynamicRemote } from './dynamic-remote'
+
 const isTruthy = <T>(x: T | false): x is T => !!x
 
 // Testing both loaders
