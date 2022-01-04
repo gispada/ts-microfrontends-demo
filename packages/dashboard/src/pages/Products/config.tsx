@@ -1,6 +1,7 @@
 import React from 'react'
 import { TableColumnType } from 'antd'
 import { TableCellLink } from 'shared/components/Table'
+import { capitalize } from 'shared/utils'
 import type { Product } from '../../api/types'
 
 export const columns: TableColumnType<Product>[] = [
@@ -11,7 +12,8 @@ export const columns: TableColumnType<Product>[] = [
   },
   {
     title: 'Category',
-    dataIndex: 'category'
+    dataIndex: 'category',
+    render: (value: Product['category']) => capitalize(value)
   },
   {
     title: 'Price',

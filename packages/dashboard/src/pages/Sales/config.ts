@@ -45,7 +45,7 @@ export const dashboardConfig: DashboardConfig = [
       },
       {
         type: ChartType.LineChart,
-        title: 'Sales and refunds trend',
+        title: 'Discounts and refunds trend',
         props: {
           data: trendsData,
           formatter,
