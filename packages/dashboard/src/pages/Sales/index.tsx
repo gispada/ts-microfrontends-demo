@@ -16,7 +16,7 @@ const Sales = () => {
       .otherwise(() => <Text>Could not render chart</Text>)
 
   return (
-    <Container maxWidth={1200} noHorizontalScroll>
+    <Container maxWidth={1200}>
       <PageHeader title="Sales overview" subTitle="Latest year trends" />
       {dashboardConfig.map(({ id, items }) => (
         <Row $margins={{ bottom: 24 }} key={id} gutter={[24, 24]}>
