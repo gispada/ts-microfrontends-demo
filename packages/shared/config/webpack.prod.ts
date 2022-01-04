@@ -5,7 +5,7 @@ import { exposedModules, sharedDeps } from './common'
 
 const prodConfig: WebpackConfig = {
   mode: 'production',
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: 'static/js/[name].[contenthash:8].js',

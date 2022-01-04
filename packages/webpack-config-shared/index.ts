@@ -58,7 +58,7 @@ const getBaseConfig: () => WebpackConfig = () => {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: [loadersMap.babelLoader]
+          use: [loadersMap.tsLoader]
         },
         {
           test: /\.vue$/,

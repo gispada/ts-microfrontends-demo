@@ -6,7 +6,7 @@ type ProductParams = {
   productId?: string
 }
 
-function mount(el: HTMLElement, params: ProductParams) {
+function mount(el: HTMLElement | string, params?: ProductParams) {
   const app = createApp(App, params)
     .use(Spin)
     .use(Button)

@@ -8,7 +8,7 @@ import { sharedDeps } from './common'
 
 const prodConfig: WebpackConfig = {
   mode: 'production',
-  entry: './src/index.js',
+  entry: './src/index',
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, '../build'),

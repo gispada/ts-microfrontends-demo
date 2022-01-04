@@ -79,11 +79,11 @@ export default {
   border: 1px solid rgb(235, 237, 240);
 }
 @media (max-width: 479px) {
-  .container >>> .ant-page-header-heading-left {
+  .container :deep(.ant-page-header-heading-left) {
     flex-direction: column;
     align-items: flex-start;
   }
-  .container >>> .ant-page-header-heading-title {
+  .container :deep(.ant-page-header-heading-title) {
     width: 100%;
   }
 }
