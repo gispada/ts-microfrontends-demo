@@ -3,7 +3,7 @@
     <div v-if="!!product">
       <a-page-header class="product-header" :title="product.title">
         <template #tags>
-          <a-tag color="blue">{{ product.category }}</a-tag>
+          <a-tag color="blue">{{ capitalize(product.category) }}</a-tag>
         </template>
         <template #extra>
           <a-rate :value="Math.round(product.rating.rate)" disabled />
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { capitalize } from "shared/utils";
+
 export default {
   props: {
     productId: String,
@@ -38,6 +40,9 @@ export default {
     return {
       product: null,
     };
+  },
+  methods: {
+    capitalize,
   },
   mounted() {
     const productId = this.productId || location.pathname.split("/")[1] || "1"; // Quick way to work in isolation
@@ -72,5 +77,14 @@ export default {
 }
 .product-header {
   border: 1px solid rgb(235, 237, 240);
+}
+@media (max-width: 479px) {
+  .container >>> .ant-page-header-heading-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .container >>> .ant-page-header-heading-title {
+    width: 100%;
+  }
 }
 </style>
