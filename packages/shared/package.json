@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/react": "^17.0.37",
+    "@types/react": "^18.0.24",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.18",
     "@types/uuid": "^8.3.3"
