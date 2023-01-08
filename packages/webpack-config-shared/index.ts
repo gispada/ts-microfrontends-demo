@@ -1,6 +1,5 @@
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
-import InterpolateHtmlPlugin from 'interpolate-html-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotEnv from 'dotenv-webpack'
 import { VueLoaderPlugin } from 'vue-loader'
@@ -84,9 +83,6 @@ const getBaseConfig: () => WebpackConfig = () => {
     // --------------- Plugins section --------------- //
     plugins: [
       new DotEnv(),
-      new InterpolateHtmlPlugin({
-        PUBLIC_URL: process.env.PUBLIC_URL
-      }),
       new HtmlWebpackPlugin({
         template: './public/index.html'
       }),
