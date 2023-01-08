@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { Typography } from 'antd'
 
 const { Title, Paragraph } = Typography
@@ -12,6 +12,7 @@ type Props = {
   [K in TitleLevel]?: boolean
 } & {
   strong?: boolean
+  children?: ReactNode
 }
 
 const levelsMap: Record<TitleLevel, Level> = {

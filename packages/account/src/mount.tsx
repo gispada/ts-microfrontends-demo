@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import App from './App'
 import { routesConfig } from './routes'
 import type { RegisterMenuFn } from 'container/context'
@@ -11,11 +11,12 @@ type Options = {
 function mount(el: HTMLElement, { registerSideMenu }: Options) {
   registerSideMenu(routesConfig)
 
-  ReactDOM.render(<App />, el)
+  const root = createRoot(el)
+  root.render(<App />)
 
   return function unmount() {
     console.log('> Unmounting account')
-    ReactDOM.unmountComponentAtNode(el)
+    root.unmount()
   }
 }
 

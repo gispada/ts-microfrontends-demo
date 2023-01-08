@@ -33,7 +33,7 @@ const NavigationMenu: FC<Props> = ({
       width={300}
       title="TS Microfrontends"
       placement="left"
-      visible={drawerOpen}
+      open={drawerOpen}
       onClose={onCloseDrawer}
       bodyStyle={drawerBodyStyle}
     >

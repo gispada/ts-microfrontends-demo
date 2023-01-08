@@ -2,6 +2,7 @@ import React, { lazy, useState, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Shell, Loader, MenuItem } from 'shared/components'
 import Logo from '../assets/webpack-logo.png'
+import p from '../package.json'
 import { MenuContext } from './context'
 import { topMenu } from './config'
 import Home from './pages/Home'
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <MenuContext.Provider value={setSideMenu}>
-      <Shell logoUri={Logo} topMenu={topMenu} sideMenu={sideMenu}>
+      <Shell version={p.version} logoUri={Logo} topMenu={topMenu} sideMenu={sideMenu}>
         <Suspense fallback={<Loader tip="Loading..." />}>
           <Routes>
             <Route path="/" element={<Home />} />

@@ -2,8 +2,6 @@ import React, { ReactNode, FC } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu as AntdMenu } from 'antd'
 
-const { SubMenu } = AntdMenu
-
 export type MenuItem = {
   title: string
   icon?: ReactNode
@@ -21,11 +19,11 @@ type MenuProps = {
   onItemClick?: (key: string) => void
 }
 
-const createMenuItem = ({ path, icon, title }: Omit<MenuItem, 'items'>) => (
-  <AntdMenu.Item key={path} icon={icon}>
-    <Link to={path}>{title}</Link>
-  </AntdMenu.Item>
-)
+const createMenuItem = ({ path, icon, title }: Omit<MenuItem, 'items'>) => ({
+  icon,
+  key: path,
+  label: <Link to={path}>{title}</Link>
+})
 
 const Menu: FC<MenuProps> = ({
   theme,
@@ -36,26 +34,27 @@ const Menu: FC<MenuProps> = ({
   sticky,
   onItemClick
 }) => {
+  const menuItems = items.map(({ items, ...rest }) => {
+    return items
+      ? {
+          key: rest.path,
+          label: rest.title,
+          icon: rest.icon,
+          children: items.map(createMenuItem)
+        }
+      : createMenuItem(rest)
+  })
+
   return (
     <AntdMenu
       theme={theme}
       mode={mode}
+      items={menuItems}
       selectedKeys={selectedKeys}
       defaultOpenKeys={defaultOpenKeys}
       onClick={({ key }) => onItemClick?.(key)}
       className={sticky ? 'sticky' : undefined}
-    >
-      {items.map(({ items, ...rest }) => {
-        if (items) {
-          return (
-            <SubMenu key={rest.path} title={rest.title} icon={rest.icon}>
-              {items.map(createMenuItem)}
-            </SubMenu>
-          )
-        }
-        return createMenuItem(rest)
-      })}
-    </AntdMenu>
+    />
   )
 }
 

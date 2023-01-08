@@ -1,15 +1,15 @@
 {
   "name": "@tsmfe-demo/product",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "NODE_ENV=development webpack serve --config config/webpack.dev.ts",
     "build": "rm -rf build && NODE_ENV=production webpack --config config/webpack.prod.ts"
   },
   "dependencies": {
-    "vue": "^3.2.26"
+    "vue": "^3.2.45"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.2.26"
+    "@vue/compiler-sfc": "^3.2.45"
   }
 }

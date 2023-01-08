@@ -1,4 +1,4 @@
-import React, { useState, useMemo, FC } from 'react'
+import React, { useState, useMemo, FC, ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Layout, Grid } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
@@ -16,6 +16,8 @@ type Props = {
   logoUri?: string
   topMenu?: MenuItem[]
   sideMenu?: MenuItem[]
+  children?: ReactNode
+  version?: string
 }
 
 // From '/seg1/seg2/seg3' to ['/seg1', '/seg1/seg2', '/seg1/seg2/seg3']
@@ -27,7 +29,7 @@ const getKeysForCurrentRoute = (pathname: string) => {
   )
 }
 
-const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
+const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu, version }) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   const { md } = useBreakpoint()
@@ -76,7 +78,9 @@ const Shell: FC<Props> = ({ logoUri, children, topMenu, sideMenu }) => {
             <Breadcrumbs pathname={pathname} />
             <div className="content">{children}</div>
           </Content>
-          <Footer className="footer">Microfrontend with TypeScript</Footer>
+          <Footer className="footer">
+            Microfrontends with TypeScript{version ? ` - v${version}` : ''}
+          </Footer>
         </Layout>
       </Layout>
     </RootLayout>

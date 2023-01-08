@@ -1,13 +1,14 @@
 import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Loader } from 'shared/components'
 import App from './App'
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!)
+
+root.render(
   <React.StrictMode>
     <Suspense fallback={<Loader fullScreen tip="Loading..." />}>
       <App />
     </Suspense>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )

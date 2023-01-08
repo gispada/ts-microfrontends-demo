@@ -5,7 +5,8 @@ import App from './App.vue'
 type ProductParams = {
   productId?: string
 }
-
+//@ts-ignore
+console.log(__VUE_OPTIONS_API__)
 function mount(el: HTMLElement | string, params?: ProductParams) {
   const app = createApp(App, params)
     .use(Spin)
