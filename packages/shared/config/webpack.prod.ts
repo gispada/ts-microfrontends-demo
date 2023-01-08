@@ -1,7 +1,7 @@
 import createWebpackConfig, { WebpackConfig } from '@tsmfe-demo/webpack-config-shared'
 import path from 'path'
-import { container } from 'webpack'
-import { exposedModules, sharedDeps } from './common'
+import { container, DefinePlugin } from 'webpack'
+import { exposedModules, sharedDeps, vueCompileOptions } from './common'
 
 const prodConfig: WebpackConfig = {
   mode: 'production',
@@ -17,7 +17,8 @@ const prodConfig: WebpackConfig = {
       filename: 'remoteEntry.js',
       exposes: exposedModules,
       shared: sharedDeps
-    })
+    }),
+    new DefinePlugin(vueCompileOptions)
   ]
 }
 

@@ -1,6 +1,6 @@
-import { container } from 'webpack'
+import { container, DefinePlugin } from 'webpack'
 import createWebpackConfig, { WebpackConfig } from '@tsmfe-demo/webpack-config-shared'
-import { exposedModules, sharedDeps } from './common'
+import { exposedModules, sharedDeps, vueCompileOptions } from './common'
 
 const PORT = 8081
 
@@ -20,7 +20,8 @@ const devConfig: WebpackConfig = {
       filename: 'remoteEntry.js',
       exposes: exposedModules,
       shared: sharedDeps
-    })
+    }),
+    new DefinePlugin(vueCompileOptions)
   ]
 }
 

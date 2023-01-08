@@ -24,5 +24,11 @@ export const sharedDeps = {
   // 'react-router': { singleton: true }, // Looks like it bundles multiple instances of react-router-dom and history
   'react-router-dom': { singleton: true },
   vue: { singleton: true },
-  'styled-components': '^5.3.3'
+  'styled-components': '^5.3.6'
+}
+
+// https://github.com/vuejs/core/blob/main/packages/vue/README.md#bundler-build-feature-flags
+export const vueCompileOptions = {
+  __VUE_OPTIONS_API__: true,
+  __VUE_PROD_DEVTOOLS__: false
 }

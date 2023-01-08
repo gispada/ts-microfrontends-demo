@@ -8,5 +8,5 @@ export const sharedDeps = {
   'react-dom': { singleton: true, requiredVersion: '>=18' },
   'react-router': { singleton: true },
   'react-router-dom': { singleton: true },
-  'styled-components': '^5.3.3'
+  'styled-components': '^5.3.6'
 }
