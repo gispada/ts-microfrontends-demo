@@ -2,6 +2,9 @@ const REMOTES_MAP_KEY = '__remotes_map__'
 
 export const getDynamicRemote = (name: tsmfe.Package['name']) => {
   return `promise new Promise((resolve, reject) => {
+    if (typeof window.${name} !== 'undefined') {
+      return resolve(window.${name});
+    }
     console.log('Getting remote ${name}');
     const getRemotesMap = () => (
       window.${REMOTES_MAP_KEY} ||
