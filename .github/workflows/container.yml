@@ -28,8 +28,6 @@ jobs:
           cache: 'yarn'
 
       - name: Build
-        env:
-          REMOTES_MAP_URL: ${{ secrets.REMOTES_MAP_URL }}
         run: |
           yarn --frozen-lockfile
           yarn build
