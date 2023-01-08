@@ -2,29 +2,27 @@ const REMOTES_MAP_URL = 'https://d1ficz68tdlptx.cloudfront.net/remotesMap.json'
 const REMOTES_MAP_KEY = '__remotes_map__'
 
 export const getDynamicRemote = (name: tsmfe.Package['name']) => {
-  return `promise new Promise((resolve) => {
+  return `promise new Promise((resolve, reject) => {
+    console.log('Getting remote ${name}');
     const getRemotesMap = () => (
       window.${REMOTES_MAP_KEY} ||
       (window.${REMOTES_MAP_KEY} = fetch('${REMOTES_MAP_URL}').then((response) => response.json()))
     );
     getRemotesMap().then((remotesMap) => {
       const remoteConfig = remotesMap.${name};
-      const script = document.createElement('script');
-      script.src = remoteConfig.url;
-      script.onload = () => {
-        const proxy = {
-          get: (request) => window.${name}.get(request),
-          init: (arg) => {
-            try {
-              return window.${name}.init(arg);
-            } catch (e) {
-              console.warn('Remote container already initialized', e);
-            }
+      __webpack_require__.l(
+        remoteConfig.url,
+        function onLoad(event) {
+          if (typeof window.${name} !== 'undefined') {
+            return resolve(window.${name});
           }
-        };
-        resolve(proxy);
-      };
-      document.head.appendChild(script);
+          const error = new Error();
+          error.message = 'Loading script failed. Could not load ${name}@' + event.target.src;
+          error.name = 'ScriptExternalLoadError';
+          reject(error);
+        },
+        name
+      );
     });
   })`.replace(/\n\s+/g, ' ')
 }
